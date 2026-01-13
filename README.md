@@ -1,8 +1,8 @@
-# Your startup name here
+# Level Up
 
 [My Notes](notes.md)
 
-A brief description of the application here. This is the startup application called level up!
+Level up is a web application designed to help users learn and master new skills. 
 
 > [!NOTE]
 > This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
@@ -17,45 +17,49 @@ A brief description of the application here. This is the startup application cal
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Have you ever wanted to learn a new skill but just didn't know where to start? Have you ever worked so hard to learn something but just kept getting it wrong? Level up is the app for you! Level up allows you to chat with other users, share video links, ask for help, and offer suggestions to improve your skill set in a variety of categories!
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](Images/webprogramming260startup-example%20An%20example%20start%20up%20project.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This is a sample drawing of what the application might look like. 
 
-```mermaid
+<!-- >```mermaid
 sequenceDiagram
     actor You
     actor Website
-    You->>Website: Replace this with your design
-```
+    You->>Website: Replace this with your design 
+```-->
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Display of different skills categories
+- Ability to select from a range of categories 
+- Opens a live chat with other users for selected category
+- Ability to send links to videos in that category 
+- Other users chats diplayed in real time 
+- Chats are stored 
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Used for structure and organization, 3 HTML pages. One for login, one for the category selection, and one for the chat. 
+- **CSS** - Used for a physically appealing style that uses good colors and use of space. 
+- **React** - Used for login, selection of categories, and opening/using different chats.
+- **Service** - Used for login and sending and receiving chats. 
+- **DB/Login** - Store user info and chat history.
+- **WebSocket** - As users use the chat, chats show up for all other users. 
 
 ## 🚀 AWS deliverable
 
