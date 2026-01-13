@@ -59,7 +59,7 @@ I am going to use the required technologies in the following ways.
 - **React** - Used for login, selection of categories, and opening/using different chats.
 - **Service** - Used for login and sending and receiving chats. 
 - **DB/Login** - Store user info and chat history.
-- **WebSocket** - As users use the chat, chats show up for all other users. 
+- **WebSocket** - As users use the chat, chats show up for all other users as notification as well as in chat.  
 
 ## 🚀 AWS deliverable
 
