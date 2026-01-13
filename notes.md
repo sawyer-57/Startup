@@ -25,6 +25,31 @@
 - if you make changes on github, you need to sync to local copy on vs code
 -> git pull
 
+To add images in markdown: 
+- add folder in repo
+- move image into that folder
+- access image by: ![given name](FolderName/imageName.png)
+
+- cmd shift P (in terminal) shows all the different commands if you don't know how. >command
+
+- HTML: structure
+- CSS: style
+- JavaScript: interaction
+
+Console notes: 
+- Allows you to navigate your disk, run console applications,run scripts
+- ls: Lists files and directories in the current directory
+- cd: Changes the current directory
+- cp: Copies files or directories
+- mv: Moves or renames files or directories
+- rm: Removes files or directories
+- ssh: secure remote shell
+- scp: secure remote copy
+- git: repository manipulation
+- vi: command line editor
+
+- use warp as my shell 
+
 ## AWS
 
 My IP address is: 54.81.96.130
