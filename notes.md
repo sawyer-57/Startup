@@ -10,19 +10,19 @@
 
 ## Beginning/learning to use everything
 
-git clone will make a copy of the repo when I insert the code HTML
-ls to check if it is there 
-pwd to check where I am 
-cd ___ to move to the repo folder 
-git status to see if modifications were made 
-make sure to always save after modifying
+- git clone will make a copy of the repo when I insert the code HTML
+- ls to check if it is there 
+- pwd to check where I am 
+- cd ___ to move to the repo folder 
+- git status to see if modifications were made 
+- make sure to always save after modifying
 
-1 modify and save 
-2 git add __ [name of location of change] 
-3 git commit -m "commit message"
-4 git push 
+1. modify and save 
+2. git add __ [name of location of change] 
+3. git commit -m "commit message"
+4. git push 
 
-if you make changes on github, you need to sync to local copy on vs code
+- if you make changes on github, you need to sync to local copy on vs code
 -> git pull
 
 ## AWS
