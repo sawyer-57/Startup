@@ -48,12 +48,39 @@ Console notes:
 - git: repository manipulation
 - vi: command line editor
 
-- use warp as my shell 
+- use warp as my shell
+
+- application (ex. HTTPS) : functionality like web browsing
+- Transport (ex. TCP/UDP) : Packet delivery 
+- TCP: slower, but is a consistent stream and won't miss any data (better for documents etc..)
+- UDP: faster, may miss information (better for movies, games etc..)
+- Internet (ex. IP) : establishing connections, routing
+- Link (ex. fiber, hardware) : physical connections
+
+- Domain Name System (DNS) : written name that connects to IP address
+- use dig : dig [url ex. byu.edu] +short -> will take you there 
+- or curl [IP address] -> will give info back
+- curl -v byu.edu -> will give info (may tell you exactly what to type with https://)
+
+Domain name
+- ex. react.simon.cs260.click
+- [subdomain.]*secondary(sld).top(tld) (secondary.top is the root)
+- tld : ex. .com, .edu, .gov, .net, .click ...
+
+localhost 127.0.0.1 -> just for your computer 
+- renting a domain name: route 53
+
+Servers 
+- renting a server: ec2
+- change region to n. virginia
+- name it something like cs260-[app name]-[your name] 
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+instance ID: i-0b3bd195013865f5a
+elastic IP address: 34.227.255.97
+to see my key, use command: ls -l ~/.ssh
+key name: levelup.pem
 
 ## Caddy
 
