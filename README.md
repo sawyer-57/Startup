@@ -65,7 +65,8 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://startup.levelupskills.click).
+I rented a server from AWS EC2, I purchased a domain name from AWS Route 53, I used caddy for the certificates and got everything set up and working. 
 
 ## 🚀 HTML deliverable
 
