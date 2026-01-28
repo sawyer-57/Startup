@@ -72,15 +72,15 @@ I rented a server from AWS EC2, I purchased a domain name from AWS Route 53, I u
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created five html pages for each part of my application. 
+- [x] **Proper HTML element usage** - I showed proper use of different html tags.
+- [x] **Links** - I have links between all of the pages in my application.
+- [x] **Text** - I have textual context describing what the application is and each part of it.
+- [x] **3rd party API placeholder** - I have a placeholder to call a 3rd party for images/quote.
+- [x] **Images** - My html matches my application images. I also have a placeholder image in my about page. 
+- [x] **Login placeholder** - I have a placeholder for users to login on the home page.
+- [x] **DB data placeholder** - Data will be stored in the messages page where placeholders were displayed.
+- [x] **WebSocket placeholder** - Chats placeholder for real time communication.
 
 ## 🚀 CSS deliverable
 
