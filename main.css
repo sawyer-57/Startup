@@ -1,0 +1,39 @@
+body {
+    font-family: 'inter', sans-serif;
+    background-color: #c7cad4;
+    margin: 0;
+    padding: 0;
+}
+
+#welcome-header {
+    font-family: 'dancing script', cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#levelup-header {
+    font-family: 'bungee shade', cursive;
+    font-size: 5rem;
+    text-align: center;
+    color: #89a6eb;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
+menu {
+  flex: 1;
+  display: flex;
+  /*  overwrite Bootstrap so the menu does not wrap */
+  flex-direction: row !important;
+  list-style: none;
+}
+
+.navbar-brand {
+  padding-left: 0.3em;
+  border-bottom: solid rgb(182, 182, 182) thin;
+}
+
+menu .nav-item {
+  padding: 0 0.3em;
+}
