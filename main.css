@@ -1,12 +1,24 @@
+html, body {
+    height: 100%; 
+    margin:0; 
+}
+
 body {
     font-family: 'inter', sans-serif;
-    background-color: #c7cad4;
+    background-color: #515256;
     margin: 0;
     padding: 0;
+    display:flex; 
+    flex-direction:column; 
+}
+
+main {
+    flex:1; 
 }
 
 #welcome-header {
     font-family: 'dancing script', cursive;
+    color: white; 
     font-size: 3rem;
     text-align: center;
     margin-top: 2rem;
@@ -21,19 +33,112 @@ body {
     margin-bottom: 2rem;
 }
 
-menu {
-  flex: 1;
+#login-header {
+    font-family: 'inter', sans-serif;
+    color: white; 
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header {
+  flex: 0 80px;
+  border-bottom: solid white thin;
+  padding-bottom:0; 
+
+}
+
+nav {
   display: flex;
-  /*  overwrite Bootstrap so the menu does not wrap */
-  flex-direction: row !important;
-  list-style: none;
+  align-items: center;
+  gap: 0.01rem; /* space between LevelUP and menu */
+  padding: 0.25rem 0.5rem; 
+  margin:0; 
+}
+
+menu {
+  display: flex;
+  justify-content: flex-start; 
+  gap: 0.25rem; 
+  list-style: none;  
 }
 
 .navbar-brand {
   padding-left: 0.3em;
-  border-bottom: solid rgb(182, 182, 182) thin;
+  font-family: 'bungee shade', cursive;
+  font-size: 1.5em;
+  color:#89a6eb; 
+}
+
+.navbar-brand:hover {
+    color:#89a6eb;
+}
+
+menu a {
+  color: #ffffff;          /* or any light color */
+  text-decoration: none;  /* removes underline */
+}
+menu a:hover {
+    color: #cacdd3;
+    text-decoration: underline;
 }
 
 menu .nav-item {
   padding: 0 0.3em;
+}
+
+.login-input {
+    display: block;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center; 
+}
+
+.btn-primary {
+  background-color: #89a6eb;
+  border-color: #89a6eb;
+}
+
+.btn-primary:hover {
+  background-color: #6f8fdc; /* slightly darker for hover */
+  border-color: #6f8fdc;
+}
+
+footer {
+    display: flex;                  
+    justify-content: space-between;  
+    align-items: center;             
+    background-color: #89a6eb;       
+    color: white;                     
+    padding: 0.5rem 0.5rem;            
+    font-family: 'inter', sans-serif; 
+    font-size: 1rem;                  
+}
+
+footer a.repo-link {
+    color: white;                     
+    text-decoration: none;            
+}
+
+footer a.repo-link:hover {
+    text-decoration: underline;       
+}
+
+
+
+
+
+
+
+@media (max-height: 600px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  main {
+    flex: 1 100vh;
+  }
 }
