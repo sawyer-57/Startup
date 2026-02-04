@@ -1,0 +1,132 @@
+main {
+    display: flex;
+    height: calc(100vh - 160px); 
+}
+
+aside {
+    width: 220px;
+    background-color: #7d98d6;
+    color: #57595e;
+    padding: 1rem;
+    border-right: 1px solid white;
+}
+
+aside h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside li {
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 1rem;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.message {
+    position: relative;
+    padding: 10px 16px;
+    border-radius: 50px;   
+    max-width: 65%;
+    margin-bottom: 6px;
+    width: fit-content;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    white-space: normal; 
+}
+
+.message-other {
+    background-color: #89a6eb;
+    align-self: flex-start;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-bottom-left-radius: 6px;
+}
+
+.message-you {
+    background-color: pink;
+    align-self: flex-end;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 6px;
+}
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    background-color: #46474b;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.message strong {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-bottom: 2px;
+}
+
+.message-you + .message-you {
+    margin-top: -4px;
+}
+
+.message-other + .message-other {
+    margin-top: -4px;
+}
+
+
+section form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+section input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: none;
+}
+
+section button {
+    padding: 0.5rem 1rem;
+    background-color: #89a6eb;
+    border: none;
+    border-radius: 8px;
+    color: white;
+}
+
+section button:hover {
+    background-color: #6f8fdc;
+}
+
+@media (max-width: 700px) {
+    aside {
+        display: none;
+    }
+
+    main {
+        height: calc(100vh - 120px);
+    }
+}
