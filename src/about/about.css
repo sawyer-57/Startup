@@ -5,7 +5,7 @@ p {
     margin-bottom: 1.5rem; 
 }
 
-main {
+.page-content {
     display: flex; 
     flex-direction: column; 
     align-items: center; 

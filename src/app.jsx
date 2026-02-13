@@ -23,19 +23,19 @@ export default function App() {
         </menu>
       </nav>
     </header>
-
+    <main>
       <Routes>
         <Route path="/" element={<Login />} exact />
-        <Route path="/physical" element={<Physical />} />
+        <Route path="/select/physical" element={<Physical />} />
         <Route path="/select" element={<Select />} />
         <Route path="/about" element={<About />} />
-        <Route path="/intellectual" element={<Intellectual />} />
+        <Route path="/select/intellectual" element={<Intellectual />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    
+    </main>
     <footer>
       <span className="author-name">Sawyer Whipperman</span>
-      <a className="repo-link"to="https://github.com/sawyer-57/Startup.git">GitHub</a>
+      <a className="repo-link"href="https://github.com/sawyer-57/Startup.git">GitHub</a>
     </footer>
 </div>
 </BrowserRouter>

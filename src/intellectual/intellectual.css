@@ -1,41 +1,49 @@
-main {
-    display: flex;
+.chat-page {
+    display: flex; 
+    gap: 1rem; 
+    padding: 1rem; 
     height: calc(100vh - 160px); 
 }
 
-aside {
+.users-sidebar {
     width: 220px;
     background-color: pink;
     color: #57595e;
-    padding: 1rem;
+    padding: 1rem; 
+    border-radius: 8px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
     border-right: 1px solid white;
 }
 
-aside h3 {
+.users-sidebar h3 {
     text-align: center;
     margin-bottom: 1rem;
 }
 
-aside ul {
+.users-sidebar ul {
     list-style: none;
     padding: 0;
 }
 
-aside li {
+.users-sidebar li {
     padding: 0.5rem;
     cursor: pointer;
     border-radius: 5px;
 }
 
-section {
+.chat-section {
     flex: 1;
     display: flex;
     flex-direction: column;
+    height:100%; 
+    min-width: 0; 
     color: white;
     padding: 1rem;
 }
 
-section h2 {
+.chat-section h2 {
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -77,8 +85,9 @@ section h2 {
     overflow-y: auto;
     background-color: #46474b;
     padding: 1rem;
+    gap:6px;
     border-radius: 8px;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; 
 }
 
 .message strong {
@@ -97,19 +106,19 @@ section h2 {
 }
 
 
-section form {
+form {
     display: flex;
     gap: 0.5rem;
 }
 
-section input {
+form input {
     flex: 1;
     padding: 0.5rem;
     border-radius: 8px;
     border: none;
 }
 
-section button {
+form button {
     padding: 0.5rem 1rem;
     background-color: #89a6eb;
     border: none;
@@ -117,16 +126,17 @@ section button {
     color: white;
 }
 
-section button:hover {
+form button:hover {
     background-color: #6f8fdc;
 }
 
 @media (max-width: 700px) {
-    aside {
+    .users-sidebar {
         display: none;
     }
 
-    main {
+    .chat-page {
+        flex-direction: column; 
         height: calc(100vh - 120px);
     }
 }
