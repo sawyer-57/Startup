@@ -88,17 +88,11 @@ No problems worked just like it said in the [instruction](https://github.com/web
 
 ## HTML
 
-This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
-
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+This part wasn't bad, it was a bit repetitive with the headers and footers, but overall it was pretty straight forward. 
 
 ## CSS
 
-This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
-
-Bootstrap seems a bit like magic. It styles things nicely, but is very opinionated. You either do, or you do not. There doesn't seem to be much in between.
-
-I did like the navbar it made it super easy to build a responsive header.
+This part was a little tricky to get it exactly how I wanted. I had to do more research in how to make things work certain ways, but overall it was fun to watch my vision come to life and to play around with it. 
 
 ```html
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -128,7 +122,6 @@ I did like the navbar it made it super easy to build a responsive header.
     </header>
 ```
 
-I also used SVG to make the icon and logo for the app. This turned out to be a piece of cake.
 
 ```html
 <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
@@ -139,13 +132,11 @@ I also used SVG to make the icon and logo for the app. This turned out to be a p
 
 ## React Part 1: Routing
 
-Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
+Setting everything up was pretty straight forward, I like how this is a lot more organized, it felt good getting everything organized and put together. It did mess up a lot of my previous CSS, I got lots of it fixed but not back to how it was before which made me sad. If I get more time I'll go back in and try to figure it out. 
 
 ## React Part 2: Reactivity
 
-This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
-
-Handling the toggling of the checkboxes was particularly interesting.
+It's so fun to look at my app working like it should! Some of the react stuff was a little confusing at first, but after reviewing the examples and simon code, it is slowly coming to make more sense. It's cool how this makes everything work!
 
 ```jsx
 <div className="input-group sound-button-container">
