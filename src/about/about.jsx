@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react'; 
 import './about.css';
 
 export function About() {
+  const [imageUrl, setImageUrl] = useState(''); 
+  const [quote, setQuote] = useState('Loading quote...');
+  const [author, setAuthor] = useState('');
+
+  useEffect(() => {
+    setImageUrl('https://images.unsplash.com/photo-1619526932016-bc0eac4f0cbe?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    setQuote('The expert in anything was once a beginner.');
+    setAuthor('Helen Hayes');
+  }, []);
+
   return (
     <div className='page-content'>
-            <div id="picture" className="picture-box"><img src="https://images.unsplash.com/photo-1619526932016-bc0eac4f0cbe?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  alt="random" /> </div>
+            <div id="picture" className="picture-box">
+              <img src={imageUrl}  alt="random" /> 
+            </div>
 
             <p>
             Have you ever wanted to learn a new skill but just didn't know where to start? Have you ever worked so hard 
@@ -23,8 +35,8 @@ export function About() {
             </p>
 
             <div id="quote">
-                <div>"The expert in anything was once a beginner."</div>
-                <div>- Helen Hayes </div>
+                <div>"{quote}"</div>
+                <div>- {author}</div>
             </div>
         </div>
   );
