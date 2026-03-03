@@ -105,8 +105,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I made my app fully functional and mocked out the things to be completed later.
+- [x] **Hooks** - I used hooks to make my app reactive. 
 
 ## 🚀 Service deliverable
 
