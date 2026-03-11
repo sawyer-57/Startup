@@ -20,18 +20,29 @@ export function Intellectual() {
         loadMessages();
     }, []);
 
-    function sendMessage(event) {
+    async function sendMessage(event) {
         event.preventDefault();
 
-        const userName = localStorage.getItem('username') || 'You'; 
+        const userName = localStorage.getItem('userName') || 'You';
 
         const message = {
-            from: userName, 
-            text: newMessage,  
-        }; 
+            from: userName,
+            text: newMessage,
+        };
 
-        setMessages([...messages, message]); 
-        setNewMessage(''); 
+        const response = await fetch('/api/message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify(message),
+        });
+
+        if (response.ok) {
+            setMessages([...messages, message]);
+            setNewMessage('');
+        } 
     }
 
     useEffect(() => {
