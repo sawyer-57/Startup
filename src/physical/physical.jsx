@@ -8,7 +8,7 @@ export function Physical() {
 
     useEffect(() => {
         async function loadMessages() {
-            const response = await fetch('/api/messages', {
+            const response = await fetch('/api/messages/physical', {
                 credentials: 'include',
             });
 
@@ -30,7 +30,7 @@ export function Physical() {
             text: input,
         };
 
-        const response = await fetch('/api/message', {
+        const response = await fetch('/api/message/physical', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
