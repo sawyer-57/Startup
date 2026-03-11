@@ -2,12 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './intellectual.css';
 
 export function Intellectual() {
-    const [messages, setMessages] = useState(() => {
-        const savedMessages = localStorage.getItem('intellectualMessages');
-        return savedMessages ? JSON.parse(savedMessages) : [];
-    });
+    const [messages, setMessages] = useState([]); 
 
     const [newMessage, setNewMessage] = useState(''); 
+
+    useEffect(() => {
+        async function loadMessages() {
+            const response = await fetch('/api/messages', {
+                credentials: 'include',
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setMessages(data);
+            }
+        }
+        loadMessages();
+    }, []);
 
     function sendMessage(event) {
         event.preventDefault();
