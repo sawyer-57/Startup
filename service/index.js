@@ -6,7 +6,8 @@ const app = express();
 
 const authCookieName = 'token';
 let users = [];
-let messages = [];
+let intellectualMessages = [];
+let physicalMessages = []; 
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -63,15 +64,23 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-//GetMessages 
-apiRouter.get('/messages', verifyAuth, (_req, res) => {
-  res.send(messages);
+// Intellectual chat
+apiRouter.get('/messages/intellectual', verifyAuth, (_req, res) => {
+  res.send(intellectualMessages);
 });
 
-// PostMessages
-apiRouter.post('/message', verifyAuth, (req, res) => {
-  const message = req.body;
-  messages.push(message);
+apiRouter.post('/message/intellectual', verifyAuth, (req, res) => {
+  intellectualMessages.push(req.body);
+  res.send({ success: true });
+});
+
+// Physical chat
+apiRouter.get('/messages/physical', verifyAuth, (_req, res) => {
+  res.send(physicalMessages);
+});
+
+apiRouter.post('/message/physical', verifyAuth, (req, res) => {
+  physicalMessages.push(req.body);
   res.send({ success: true });
 });
 
