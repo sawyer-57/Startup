@@ -3,9 +3,29 @@ import React, { useState } from 'react';
 
 export function Login() {
   const [userName, setUserName] = useState(''); 
+  const [password, setPassword] = useState('');
 
-  function handleLogin() {
-    localStorage.setItem('userName', userName);
+  async function handleLogin(e) {
+    e.preventDefault();
+
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        email: userName,
+        password: password,
+      }),
+    });
+
+    if (response.ok) {
+      localStorage.setItem('userName', userName);
+      window.location.href = '/select';
+    } else {
+      alert('Login failed');
+    }
   }
 
   return (
