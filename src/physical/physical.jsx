@@ -2,17 +2,28 @@ import React, { useState, useEffect} from 'react';
 import './physical.css';
 
 export function Physical() {
-    const [messages, setMessages] = useState(() => {
-        const savedMessages = localStorage.getItem('physicalMessages');
-        return savedMessages ? JSON.parse(savedMessages) : [];
-    });
+    const [messages, setMessages] = useState([]); 
 
     const [input, setInput] = useState(''); 
 
+    useEffect(() => {
+        async function loadMessages() {
+            const response = await fetch('/api/messages', {
+                credentials: 'include',
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setMessages(data);
+            }
+        }
+        loadMessages();
+    }, []);
+    
     function handleSend(e) {
         e.preventDefault();
 
-        const userName = localStorage.getItem('username') || 'You'; 
+        const userName = localStorage.getItem('userName') || 'You'; 
 
         const newMessage = {
             from: userName, 
@@ -21,7 +32,6 @@ export function Physical() {
 
         const updatedMessages = [...messages, newMessage];
         setMessages(updatedMessages); 
-        localStorage.setItem('physicalMessages', JSON.stringify(updatedMessages));
         setInput('');
     }
 
