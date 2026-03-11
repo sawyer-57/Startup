@@ -8,7 +8,7 @@ export function Intellectual() {
 
     useEffect(() => {
         async function loadMessages() {
-            const response = await fetch('/api/messages', {
+            const response = await fetch('/api/messages/intellectual', {
                 credentials: 'include',
             });
 
@@ -30,7 +30,7 @@ export function Intellectual() {
             text: newMessage,
         };
 
-        const response = await fetch('/api/message', {
+        const response = await fetch('/api/message/intellectual', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
