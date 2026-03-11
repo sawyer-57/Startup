@@ -19,20 +19,27 @@ export function Physical() {
         }
         loadMessages();
     }, []);
-    
-    function handleSend(e) {
+
+    async function handleSend(e) {
         e.preventDefault();
 
-        const userName = localStorage.getItem('userName') || 'You'; 
+        const userName = localStorage.getItem('userName') || 'You';
 
         const newMessage = {
-            from: userName, 
-            text: input 
-        }; 
+            from: userName,
+            text: input,
+        };
 
-        const updatedMessages = [...messages, newMessage];
-        setMessages(updatedMessages); 
-        setInput('');
+        const response = await fetch('/api/message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify(newMessage),
+        });
+        if (response.ok) {
+            setMessages((prevMessages) => [...prevMessages, newMessage]);
+            setInput('');
+        }
     }
 
     useEffect(() => {
