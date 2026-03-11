@@ -83,7 +83,7 @@ export function Physical() {
             <h2> Physical Skills Chat</h2>
             <div id="messages">
                 {messages.map((msg, index) => {
-                    const userName = localStorage.getItem('username') || 'You';
+                    const userName = localStorage.getItem('userName') || 'You';
 
                     return(
                         <div key={index} className={msg.from === userName ? 'message-you' : 'message-other'}>

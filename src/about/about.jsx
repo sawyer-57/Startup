@@ -8,8 +8,21 @@ export function About() {
 
   useEffect(() => {
     setImageUrl('https://images.unsplash.com/photo-1619526932016-bc0eac4f0cbe?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-    setQuote('The expert in anything was once a beginner.');
-    setAuthor('Helen Hayes');
+
+    async function loadQuote() {
+      try {
+        const response = await fetch('https://api.quotable.io/random?tags=inspirational|education|success');
+        const data = await response.json();
+
+        setQuote(data.content);
+        setAuthor(data.author);
+      } catch {
+        setQuote('Failure loading quote.');
+        setAuthor('Unknown');
+      }
+    }
+
+    loadQuote();
   }, []);
 
   return (
