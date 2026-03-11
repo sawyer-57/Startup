@@ -67,8 +67,8 @@ export function Login() {
           </div>
 
           <div className="d-flex justify-content-center gap-2">
-            <button className="btn btn-primary btn-sm">Login</button>
-            <button className="btn btn-outline-light btn-sm">Sign Up</button>
+            <button className="btn btn-primary btn-sm" onClick={handleLogin}>Login</button>
+            <button className="btn btn-outline-light btn-sm" onClick={handleSignup}>Sign Up</button>
           </div>
       </form>
     </div>
