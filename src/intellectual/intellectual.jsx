@@ -40,7 +40,7 @@ export function Intellectual() {
         });
 
         if (response.ok) {
-            setMessages((prevMessages) => [...prevMessages, newMessage]);
+            setMessages((prevMessages) => [...prevMessages, message]);
             setNewMessage('');
         } 
     }

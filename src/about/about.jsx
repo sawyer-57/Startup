@@ -11,11 +11,11 @@ export function About() {
 
     async function loadQuote() {
       try {
-        const response = await fetch('https://api.quotable.io/random?tags=inspirational|education|success');
+        const response = await fetch('https://api.adviceslip.com/advice');
         const data = await response.json();
 
-        setQuote(data.content);
-        setAuthor(data.author);
+        setQuote(data.slip.advice);
+        setAuthor('Advice Slip');
       } catch {
         setQuote('Failure loading quote.');
         setAuthor('Unknown');
