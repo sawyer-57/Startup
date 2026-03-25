@@ -65,24 +65,24 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // Intellectual chat
-apiRouter.get('/messages/intellectual', verifyAuth, (_req, res) => {
-  const intellectualMessages =  DB.getMessagesByType('intellectual');
+apiRouter.get('/messages/intellectual', verifyAuth, async (_req, res) => {
+  const intellectualMessages =  await DB.getMessagesByType('intellectual');
   res.send(intellectualMessages);
 });
 
-apiRouter.post('/message/intellectual', verifyAuth, (req, res) => {
-  DB.addMessage({ ...req.body, type: 'intellectual' });
+apiRouter.post('/message/intellectual', verifyAuth, async (req, res) => {
+  await DB.addMessage({ ...req.body, type: 'intellectual' });
   res.send({ success: true });
 });
 
 // Physical chat
-apiRouter.get('/messages/physical', verifyAuth, (_req, res) => {
-  const physicalMessages = DB.getMessagesByType('physical');
+apiRouter.get('/messages/physical', verifyAuth, async (_req, res) => {
+  const physicalMessages = await DB.getMessagesByType('physical');
   res.send(physicalMessages);
 });
 
-apiRouter.post('/message/physical', verifyAuth, (req, res) => {
-  DB.addMessage({ ...req.body, type: 'physical' });
+apiRouter.post('/message/physical', verifyAuth, async (req, res) => {
+  await DB.addMessage({ ...req.body, type: 'physical' });
   res.send({ success: true });
 });
 
@@ -113,9 +113,9 @@ async function findUser(field, value) {
   if (!value) return null;
 
   if (field === 'token') {
-    return DB.getUserByToken(value);
+    return await DB.getUserByToken(value);
   } 
-  return DB.getUser(value); 
+  return await DB.getUser(value); 
 }
 
 function setAuthCookie(res, authToken) {
