@@ -1,10 +1,10 @@
-import React, { useState, useEffect} from 'react'; 
+import React, { useState, useEffect, useRef} from 'react'; 
 import './physical.css';
 
 export function Physical() {
     const [messages, setMessages] = useState([]); 
-
     const [input, setInput] = useState(''); 
+    const socketRef = useRef(null);
 
     useEffect(() => {
         async function loadMessages() {
@@ -20,53 +20,45 @@ export function Physical() {
         loadMessages();
     }, []);
 
+    useEffect(() => {
+        socketRef.current = new WebSocket('ws://localhost:4000');
+
+        socketRef.current.addEventListener('open', () => {
+            console.log('WebSocket connected (Physical)');
+        });
+
+        socketRef.current.addEventListener('message', (event) => {
+            const msg = JSON.parse(event.data);
+
+            // Only handle physical messages
+            if (msg.type === 'physical') {
+                setMessages((prevMessages) => [...prevMessages, msg]);
+            }
+        });
+
+        return () => {
+            socketRef.current.close();
+        };
+    }, []);
+
+
     async function handleSend(e) {
         e.preventDefault();
 
         const userName = localStorage.getItem('userName') || 'You';
 
         const newMessage = {
+            type: 'physical',
             from: userName,
             text: input,
         };
 
-        const response = await fetch('/api/message/physical', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify(newMessage),
-        });
-        if (response.ok) {
-            setMessages((prevMessages) => [...prevMessages, newMessage]);
-            setInput('');
-        }
+        socketRef.current.send(JSON.stringify(newMessage));
+
+        
+        setMessages((prevMessages) => [...prevMessages, newMessage]);
+        setInput('');
     }
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const fakeUsers = ['User1', 'User2', 'User3'];
-            const fakeTexts = [
-                "I'm working on that too!",
-                "I just hit a new stunt!", 
-                "I just landed my back tuck!", 
-                "Does anyone have any good workout tips?", 
-                "How long did it take you to learn that?", 
-                "Can someone watch my video and give me feedback?"
-            ];
-
-            const randomUser = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
-            const randomText = fakeTexts[Math.floor(Math.random() * fakeTexts.length)];
-
-            const fakeMessage = {
-                from: randomUser,
-                text: randomText,
-            };
-
-            setMessages((prevMessages) => [...prevMessages, fakeMessage]);
-        }, 8000); 
-
-        return () => clearInterval(interval);
-    }, []); 
 
 
   return (
