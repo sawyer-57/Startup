@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect, useRef } from 'react'; 
 import './intellectual.css';
 
 export function Intellectual() {
     const [messages, setMessages] = useState([]); 
-
     const [newMessage, setNewMessage] = useState(''); 
+    const socketRef = useRef(null);
 
     useEffect(() => {
         async function loadMessages() {
@@ -20,58 +20,49 @@ export function Intellectual() {
         loadMessages();
     }, []);
 
+    useEffect(() => {
+        socketRef.current = new WebSocket('ws://localhost:4000');
+
+        socketRef.current.addEventListener('open', () => {
+            console.log('WebSocket connected (Intellectual)');
+        });
+
+        socketRef.current.addEventListener('message', (event) => {
+            const msg = JSON.parse(event.data);
+
+            // Only handle intellectual messages
+            if (msg.type === 'intellectual') {
+                setMessages((prevMessages) => [...prevMessages, msg]);
+            }
+        });
+
+        return () => {
+            socketRef.current.close();
+        };
+    }, []);
+
+
     async function sendMessage(event) {
         event.preventDefault();
 
         const userName = localStorage.getItem('userName') || 'You';
 
         const message = {
-            from: userName,
+            type: 'intellectual',
             text: newMessage,
+            from: userName,
         };
 
-        const response = await fetch('/api/message/intellectual', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify(message),
-        });
+        socketRef.current.send(JSON.stringify(message));
 
-        if (response.ok) {
-            setMessages((prevMessages) => [...prevMessages, message]);
-            setNewMessage('');
-        } 
+
+
+        
+        setMessages((prevMessages) => [...prevMessages, message]);
+        setNewMessage('');
     }
- 
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const fakeUsers = ['User1', 'User2', 'User3'];
-            const fakeTexts = [
-                "I'm working on that too!", 
-                "Oh yeah, that is a hard one!", 
-                "Does anyone understand this other problem I'm doing?", 
-                "I think I figured it out!", 
-                "I love doing those!", 
-                "I can help!", 
-                "Can someone help me with this?"
-            ]; 
 
-            const randomUser = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
-            const randomText = fakeTexts[Math.floor(Math.random() * fakeTexts.length)];
-
-            const fakeMessage = {
-                from: randomUser,
-                text: randomText,
-            };
-
-            setMessages((prevMessages) => [...prevMessages, fakeMessage]);
-        }, 8000); 
-
-        return () => clearInterval(interval);
-    }, []); 
 
   return (
     <div className='chat-page'> 
