@@ -66,7 +66,7 @@ const verifyAuth = async (req, res, next) => {
 
 // Intellectual chat
 apiRouter.get('/messages/intellectual', verifyAuth, async (_req, res) => {
-  const intellectualMessages =  await DB.getMessagesByType('intellectual');
+  const intellectualMessages =  (await DB.getMessagesByType('intellectual')).map(m => ({ type : m.type, user: m.user || m.from, content: m.content || m.text }));
   res.send(intellectualMessages);
 });
 
@@ -77,7 +77,7 @@ apiRouter.post('/message/intellectual', verifyAuth, async (req, res) => {
 
 // Physical chat
 apiRouter.get('/messages/physical', verifyAuth, async (_req, res) => {
-  const physicalMessages = await DB.getMessagesByType('physical');
+  const physicalMessages = (await DB.getMessagesByType('physical')).map(m => ({ type : m.type, user: m.user || m.from, content: m.content || m.text }));
   res.send(physicalMessages);
 });
 

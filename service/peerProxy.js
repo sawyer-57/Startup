@@ -14,13 +14,19 @@ function peerProxy(httpServer) {
       try {
         const message = JSON.parse(data); // Expect { type, content, user }
 
+        const formattedMessage = {
+            type: message.type,
+            user: message.user,
+            content: message.content,
+            };
+
         // Save the message to the DB
-        await DB.addMessage(message);
+        await DB.addMessage(formattedMessage);
 
         // Broadcast to other clients
         socketServer.clients.forEach((client) => {
           if (client !== socket && client.readyState === WebSocket.OPEN) {
-            client.send(JSON.stringify(message));
+            client.send(JSON.stringify(formattedMessage));
           }
         });
       } catch (err) {

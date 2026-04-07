@@ -21,7 +21,7 @@ export function Physical() {
     }, []);
 
     useEffect(() => {
-        socketRef.current = new WebSocket('ws://localhost:4000');
+        socketRef.current = new WebSocket('wss://levelupskills.click');
 
         socketRef.current.addEventListener('open', () => {
             console.log('WebSocket connected (Physical)');
@@ -49,8 +49,8 @@ export function Physical() {
 
         const newMessage = {
             type: 'physical',
-            from: userName,
-            text: input,
+            user: userName,
+            content: input,
         };
 
         socketRef.current.send(JSON.stringify(newMessage));

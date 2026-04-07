@@ -21,7 +21,7 @@ export function Intellectual() {
     }, []);
 
     useEffect(() => {
-        socketRef.current = new WebSocket('ws://localhost:4000');
+        socketRef.current = new WebSocket('wss://levelupskills.click');
 
         socketRef.current.addEventListener('open', () => {
             console.log('WebSocket connected (Intellectual)');
@@ -49,8 +49,8 @@ export function Intellectual() {
 
         const message = {
             type: 'intellectual',
-            text: newMessage,
-            from: userName,
+            content: newMessage,
+            user: userName,
         };
 
         socketRef.current.send(JSON.stringify(message));
