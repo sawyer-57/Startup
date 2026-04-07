@@ -1,4 +1,5 @@
 const { WebSocketServer, WebSocket } = require('ws');
+const DB = require('./database.js'); // make sure you require your DB
 
 function peerProxy(httpServer) {
   // Create a websocket server using the existing HTTP server
@@ -8,13 +9,23 @@ function peerProxy(httpServer) {
     console.log('A new WebSocket client connected');
     socket.isAlive = true;
 
-    // Forward messages to everyone except the sender
-    socket.on('message', (data) => {
-      socketServer.clients.forEach((client) => {
-        if (client !== socket && client.readyState === WebSocket.OPEN) {
-          client.send(data);
-        }
-      });
+    // Forward messages to everyone except the sender and save to DB
+    socket.on('message', async (data) => {
+      try {
+        const message = JSON.parse(data); // Expect { type, content, user }
+
+        // Save the message to the DB
+        await DB.addMessage(message);
+
+        // Broadcast to other clients
+        socketServer.clients.forEach((client) => {
+          if (client !== socket && client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify(message));
+          }
+        });
+      } catch (err) {
+        console.error('Invalid message', err);
+      }
     });
 
     // Respond to pong messages to mark connection as alive
