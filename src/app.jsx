@@ -10,6 +10,8 @@ import { About } from './about/about';
 import { Intellectual } from './intellectual/intellectual';
 
 export default function App() {
+  const userName = localStorage.getItem('userName');
+  
   return  ( 
   <BrowserRouter>
   <div className="app-container bg-dark text-light">
@@ -19,7 +21,9 @@ export default function App() {
         <menu>
             <li className="nav-item"><NavLink to="/">Home</NavLink></li>
             <li className="nav-item"><NavLink to="about">About</NavLink></li>
-            <li className="nav-item"><NavLink to="select">Select Category</NavLink></li>
+            {userName && (
+              <li className="nav-item"><NavLink to="select">Select Category</NavLink></li>
+            )}
         </menu>
       </nav>
     </header>
