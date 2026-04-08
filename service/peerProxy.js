@@ -1,5 +1,20 @@
 const { WebSocketServer, WebSocket } = require('ws');
 const DB = require('./database.js'); // make sure you require your DB
+const connectedUsers = new Set(); 
+
+
+function broadcastUsers(socketServer) {
+  const userList = Array.from(connectedUsers);
+
+  socketServer.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) { // WebSocket.OPEN
+      client.send(JSON.stringify({
+        type: 'users',
+        users: userList,
+      }));
+    }
+  });
+}
 
 function peerProxy(httpServer) {
   // Create a websocket server using the existing HTTP server
@@ -14,6 +29,14 @@ function peerProxy(httpServer) {
       try {
         const message = JSON.parse(data); // Expect { type, content, user }
 
+        if (message.type === 'join') {
+            socket.user = message.user; 
+            connectedUsers.add(message.user);
+
+            broadcastUsers(socketServer);
+            return;
+        }
+
         const formattedMessage = {
             type: message.type,
             user: message.user || message.from, // Support both 'user' and legacy 'from'
@@ -26,7 +49,7 @@ function peerProxy(httpServer) {
 
         // Broadcast to other clients
         socketServer.clients.forEach((client) => {
-          if (client !== socket && client.readyState === WebSocket.OPEN) {
+          if (client.readyState === WebSocket.OPEN) {
             client.send(JSON.stringify(formattedMessage));
           }
         });
@@ -36,8 +59,11 @@ function peerProxy(httpServer) {
     });
 
     // Respond to pong messages to mark connection as alive
-    socket.on('pong', () => {
-      socket.isAlive = true;
+    socket.on('close', () => {
+      if (socket.user) {
+        connectedUsers.delete(socket.user);
+        broadcastUsers(socketServer);
+      }
     });
   });
 
