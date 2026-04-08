@@ -21,7 +21,8 @@ export function Intellectual() {
     }, []);
 
     useEffect(() => {
-        socketRef.current = new WebSocket('wss://levelupskills.click');
+        const socketUrl = window.location.hostname === 'localhost' ? 'ws://localhost:4000' : `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.host}`;
+        socketRef.current = new WebSocket(socketUrl);
 
         socketRef.current.addEventListener('open', () => {
             console.log('WebSocket connected (Intellectual)');
@@ -81,8 +82,8 @@ export function Intellectual() {
                     const userName = localStorage.getItem('userName') || 'You';
 
                     return(
-                        <div key={index} className={msg.from === userName ? 'message-you' : 'message-other'}>
-                            <strong>{msg.from}:</strong> {msg.text}
+                        <div key={index} className={(msg.user || msg.from) === userName ? 'message-you' : 'message-other'}>
+                            <strong>{msg.user || msg.from}:</strong> {msg.content || msg.text}
                         </div> 
                     ); 
                 })} 

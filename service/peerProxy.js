@@ -16,9 +16,10 @@ function peerProxy(httpServer) {
 
         const formattedMessage = {
             type: message.type,
-            user: message.user,
-            content: message.content,
+            user: message.user || message.from, // Support both 'user' and legacy 'from'
+            content: message.content || message.text, // Support both 'content' and legacy 'text'
             };
+
 
         // Save the message to the DB
         await DB.addMessage(formattedMessage);
@@ -51,3 +52,4 @@ function peerProxy(httpServer) {
 }
 
 module.exports = { peerProxy };
+
