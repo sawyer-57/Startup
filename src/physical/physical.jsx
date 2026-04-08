@@ -4,6 +4,7 @@ import './physical.css';
 export function Physical() {
     const [messages, setMessages] = useState([]); 
     const [input, setInput] = useState(''); 
+    const [users, setUsers] = useState([]);
     const socketRef = useRef(null);
 
     useEffect(() => {
@@ -26,11 +27,22 @@ export function Physical() {
 
         socketRef.current.addEventListener('open', () => {
             console.log('WebSocket connected (Physical)');
+
+            const userName = localStorage.getItem('userName') || 'You';
+
+            socketRef.current.send(JSON.stringify({
+                type: 'join',
+                user: userName,
+            }));
         });
 
         socketRef.current.addEventListener('message', (event) => {
             const msg = JSON.parse(event.data);
 
+            if (msg.type === 'users') {
+                setUsers(msg.users);
+                return;
+            }
             // Only handle physical messages
             if (msg.type === 'physical') {
                 setMessages((prevMessages) => [...prevMessages, msg]);
@@ -67,9 +79,15 @@ export function Physical() {
         <aside className='users-sidebar'>
             <h3>Users</h3>
             <ul>
-                <li>User1</li>
-                <li>User2</li>
-                <li>User3</li>
+                {users.map((u, index) => {
+                    const userName = localStorage.getItem('userName') || 'You';
+
+                    return (
+                        <li key={index}>
+                            {u} {u === userName ? "(You)" : ""}
+                        </li>
+                    );
+                })}
             </ul>
         </aside>
         <section className='chat-section'> 

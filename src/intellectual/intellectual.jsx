@@ -4,6 +4,7 @@ import './intellectual.css';
 export function Intellectual() {
     const [messages, setMessages] = useState([]); 
     const [newMessage, setNewMessage] = useState(''); 
+    const [users, setUsers] = useState([]);
     const socketRef = useRef(null);
 
     useEffect(() => {
@@ -26,10 +27,22 @@ export function Intellectual() {
 
         socketRef.current.addEventListener('open', () => {
             console.log('WebSocket connected (Intellectual)');
+
+            const userName = localStorage.getItem('userName') || 'You';
+
+            socketRef.current.send(JSON.stringify({
+                type: 'join',
+                user: userName,
+            }));
         });
 
         socketRef.current.addEventListener('message', (event) => {
             const msg = JSON.parse(event.data);
+
+            if (msg.type === 'users') {
+                setUsers(msg.users);
+                return;
+            }
 
             // Only handle intellectual messages
             if (msg.type === 'intellectual') {
@@ -70,9 +83,15 @@ export function Intellectual() {
         <aside className='users-sidebar'>
             <h3>Users</h3>
             <ul>
-                <li>User1</li>
-                <li>User2</li>
-                <li>User3</li>
+                {users.map((u, index) => {
+                    const userName = localStorage.getItem('userName') || 'You';
+
+                    return (
+                        <li key={index}>
+                            {u} {u === userName ? "(You)" : ""}
+                        </li>
+                    );
+                })}
             </ul>
         </aside>
         <section className='chat-section'> 
