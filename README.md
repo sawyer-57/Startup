@@ -130,8 +130,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - my backend listens for websocket connection in peerProxy.js.
+- [x] **Frontend makes WebSocket connection** - my frontend makes websocket connections in intellectual.jsx and physical.jsx. 
+- [x] **Data sent over WebSocket connection** - my data sends over websocket connections in the chats and with users.
+- [x] **WebSocket data displayed** - the websocket data is displayed as messages and in the user sidebar.
+- [x] **Application is fully functional** - my application is fully functional!!!
